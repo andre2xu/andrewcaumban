@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill:rgb(205,205,205);fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g id="instagram-icon" serif:id="instagram icon">
+        <path d="M320,106.5L492.5,106.5C492.5,106.5 592,107.5 607.5,201L607.5,380C607.5,380 612,486.5 494,490L311.5,490C311.5,490 201.5,486 205,376.5L205,213C205,213 206,115.5 320,106.5Z" style="fill:none;stroke:rgb(205,205,205);stroke-width:20px;"/>
+        <g transform="matrix(0.704251,0,0,0.71805,122.174,83.6556)">
+            <path d="M320,106.5L492.5,106.5C492.5,106.5 592,107.5 607.5,201L607.5,380C607.5,380 612,486.5 494,490L311.5,490C311.5,490 201.5,486 205,376.5L205,213C205,213 206,115.5 320,106.5Z" style="fill:none;stroke:rgb(205,205,205);stroke-width:28.12px;"/>
+        </g>
+        <g transform="matrix(0.883302,0,0,0.883302,43.5437,39.7149)">
+            <ellipse cx="418.5" cy="299.25" rx="92.5" ry="91.75" style="fill:none;stroke:rgb(205,205,205);stroke-width:22.64px;"/>
+        </g>
+        <g transform="matrix(0.874005,0,0,0.874005,60.2175,21.876)">
+            <ellipse cx="495" cy="214" rx="25" ry="24.5"/>
+        </g>
+    </g>
+</svg>
