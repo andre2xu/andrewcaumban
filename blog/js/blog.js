@@ -18,8 +18,6 @@ window.addEventListener('load', function () {
     const STYLESHEET_RULES = document.styleSheets[0].cssRules;
     const NUMBER_OF_RULES = STYLESHEET_RULES.length;
 
-    // console.log(STYLESHEET_RULES);
-
     function __getStyles__(selector) {
         for (let i=0; i < NUMBER_OF_RULES; i++) {
             const CURRENT_RULE = STYLESHEET_RULES[i];
