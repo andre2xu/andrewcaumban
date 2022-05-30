@@ -4,10 +4,37 @@ window.addEventListener('load', function () {
     const BLOGGER_NAME = document.getElementById('blogger-name');
     const NAVIGATION = document.getElementsByTagName('nav')[0];
     const FOOTER = document.getElementsByTagName('footer')[0];
+    const FIRST_BLOG_POST = document.getElementsByClassName('blogs-container')[0].firstElementChild;
 
+
+
+    const STYLES = {
+        about$customFont: 'body .custom-font',
+        about$sectionParagraphs: 'body main #about section .title-AND-paragraph-container',
+        mylife$sectionHeading: 'body main #mylife > section h2',
+        mylife$postText: 'body main #mylife > section .blogs-container article'
+    };
     const STYLESHEET_RULES = document.styleSheets[0].cssRules;
-    const CUSTOM_FONT_CSS = STYLESHEET_RULES[3].style;
-    const SECTION_PARAGRAPHS_CSS = STYLESHEET_RULES[20].style;
+    const NUMBER_OF_RULES = STYLESHEET_RULES.length;
+
+    // console.log(STYLESHEET_RULES);
+
+    function __getStyles__(selector) {
+        for (let i=0; i < NUMBER_OF_RULES; i++) {
+            const CURRENT_RULE = STYLESHEET_RULES[i];
+
+            if (CURRENT_RULE.cssText.split('{')[0].trim() === selector) {
+                return CURRENT_RULE.style;
+            }
+        }
+
+        return null;
+    };
+
+    STYLES['about$customFont'] = __getStyles__(STYLES['about$customFont']);
+    STYLES['about$sectionParagraphs'] = __getStyles__(STYLES['about$sectionParagraphs']);
+    STYLES['mylife$sectionHeading'] = __getStyles__(STYLES['mylife$sectionHeading']);
+    STYLES['mylife$postText'] = __getStyles__(STYLES['mylife$postText']);
 
 
 
@@ -18,16 +45,18 @@ window.addEventListener('load', function () {
     window.addEventListener('resize', __resizeActiveComponents__);
 
     function __resizeActiveComponents__() {
-        let referenceRect = SOCIAL_MEDIA_CONTAINER.getBoundingClientRect();
+        const SOCIAL_MEDIA_CONTAINER_RECT = SOCIAL_MEDIA_CONTAINER.getBoundingClientRect();
         const WINDOW_WIDTH = window.innerWidth;
 
-        __resizeFixedComponents__(referenceRect, WINDOW_WIDTH);
+        __resizeFixedComponents__(SOCIAL_MEDIA_CONTAINER_RECT, WINDOW_WIDTH);
 
         switch (sectionSelected) {
             case 'about':
-                __resizeAboutMeComponents__(referenceRect, WINDOW_WIDTH);
+                __resizeAboutMeComponents__(SOCIAL_MEDIA_CONTAINER_RECT, WINDOW_WIDTH);
                 break;
             case 'mylife':
+                const FIRST_BLOG_POST_RECT = FIRST_BLOG_POST.getBoundingClientRect();
+                __resizeMyLifeComponents__(FIRST_BLOG_POST_RECT, WINDOW_WIDTH);
                 break;
             case 'gallery-art':
 
@@ -61,16 +90,29 @@ window.addEventListener('load', function () {
     };
 
     function __resizeAboutMeComponents__(referenceRect, windowWidth) {
-        let header_multiplier = 1;
+        let heading_multiplier = 1;
         let paragraph_multiplier = 0.43;
 
         if (windowWidth > 1200) {
-            header_multiplier = 0.5;
+            heading_multiplier = 0.5;
             paragraph_multiplier = 0.3;
         }
 
-        CUSTOM_FONT_CSS.fontSize = (referenceRect.height * header_multiplier) + 'px';
-        SECTION_PARAGRAPHS_CSS.fontSize = (referenceRect.height * paragraph_multiplier) + 'px';
+        STYLES['about$customFont'].fontSize = (referenceRect.height * heading_multiplier) + 'px';
+        STYLES['about$sectionParagraphs'].fontSize = (referenceRect.height * paragraph_multiplier) + 'px';
+    };
+
+    function __resizeMyLifeComponents__(referenceRect, windowWidth) {
+        let heading_multiplier = 0.1;
+        let postText_multiplier = 0.045;
+
+        if (windowWidth < 900) {
+            heading_multiplier = 0.05;
+            postText_multiplier = 0.04;
+        }
+
+        STYLES['mylife$sectionHeading'].fontSize = (referenceRect.width * heading_multiplier) + 'px';
+        STYLES['mylife$postText'].fontSize = (referenceRect.width * postText_multiplier) + 'px';
     };
 
 
