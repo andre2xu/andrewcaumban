@@ -205,12 +205,29 @@ body {
                     justify-content: space-between;
                     min-height: 35vw;
                     width: 100%;
+                    margin-bottom: 5%;
+
+                    &.unloaded {
+                        display: none;
+                    }
+
+                    @media screen and (max-width: 900px) {
+                        margin-bottom: 10%;
+                    }
 
                     article {
                         width: 30%;
                         box-shadow: 0px 0px 28px -17px #000000;
                         position: relative;
                         font-family: Arial, Helvetica, sans-serif;
+
+                        &.hidden {
+                            visibility: hidden;
+
+                            @media screen and (max-width: 900px) {
+                                display: none;
+                            }
+                        }
 
                         div {
                             height: 60%;
@@ -265,7 +282,7 @@ body {
 
                 & > img {
                     cursor: pointer;
-                    margin-top: 8%;
+                    margin-top: 6%;
                     width: 10%;
                     min-width: 70px;
                     transform: rotate(90deg);

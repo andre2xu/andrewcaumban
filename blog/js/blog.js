@@ -5,6 +5,7 @@ window.addEventListener('load', function () {
     const NAVIGATION = document.getElementsByTagName('nav')[0];
     const FOOTER = document.getElementsByTagName('footer')[0];
     const FIRST_BLOG_POST = document.getElementsByClassName('blogs-container')[0].firstElementChild;
+    const MY_LIFE_SECTION = document.getElementById('mylife');
 
 
 
@@ -148,5 +149,26 @@ window.addEventListener('load', function () {
 
     NAVIGATION.addEventListener('mouseleave', function () {
         currentlySelectedElement.classList.add('selected');
+    });
+
+
+
+    // LOAD POSTS
+    MY_LIFE_SECTION.addEventListener('click', function (event) {
+        const ELEMENT_CLICKED = event.target;
+
+        if (ELEMENT_CLICKED.hasAttribute('data-load-more-button')) {
+            const SECTION = ELEMENT_CLICKED.parentNode;
+            const NEXT_BLOG_CONTAINER = SECTION.querySelector('*.unloaded');
+
+            NEXT_BLOG_CONTAINER.classList.remove('unloaded');
+
+            const ALL_POSTS_ARRAY = NEXT_BLOG_CONTAINER.querySelectorAll('[data-card-type="post"]');
+            const NUMBER_OF_POSTS = ALL_POSTS_ARRAY.length;
+
+            for (let i=0; i < NUMBER_OF_POSTS; i++) {
+                ALL_POSTS_ARRAY[i].classList.remove('hidden');
+            }
+        }
     });
 });
